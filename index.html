@@ -20,7 +20,7 @@
           <span class="stat-value"><span id="levelNum">1</span> · <span id="levelName">—</span></span>
         </div>
         <div class="stat">
-          <span class="stat-label">Moves</span>
+          <span class="stat-label">Rotations</span>
           <span class="stat-value"><span id="moveCount">0</span> / <span id="moveLimit">0</span></span>
         </div>
         <div class="stat">
@@ -31,14 +31,19 @@
       </div>
     </header>
 
+    <section class="objective" aria-live="polite">
+      <strong id="objectiveTitle">Objective</strong>
+      <span id="objectiveText">Rotate mirrors so the beam powers every crystal. The gate opens only after all crystals glow.</span>
+    </section>
+
     <section class="stage">
-      <canvas id="game" width="480" height="480"></canvas>
+      <canvas id="game" width="480" height="480" aria-label="Echo Grid game board"></canvas>
       <div id="overlay" class="overlay hidden">
         <div class="overlay-card">
           <h2 id="overlayTitle">Level Complete</h2>
           <p id="overlayBody"></p>
           <div class="overlay-actions">
-            <button id="overlayNext" class="btn primary">Next Level (N)</button>
+            <button id="overlayNext" class="btn primary">Next Room (N)</button>
             <button id="overlayRestart" class="btn">Replay (R)</button>
           </div>
         </div>
@@ -56,7 +61,6 @@
       </div>
     </section>
 
-    <!-- On-screen controls — shown on touch devices / narrow screens -->
     <section class="touchpad" aria-label="Touch controls">
       <div class="dpad">
         <button class="tbtn up" id="touchUp" aria-label="Move up">▲</button>
@@ -65,19 +69,19 @@
         <button class="tbtn right" id="touchRight" aria-label="Move right">▶</button>
         <button class="tbtn down" id="touchDown" aria-label="Move down">▼</button>
       </div>
-      <p class="touch-hint">D-pad to move · ⟳ rotates the mirror you face</p>
+      <p class="touch-hint">D-pad to move · ⟳ rotates the mirror you face · tap an adjacent mirror to rotate it</p>
     </section>
 
     <footer class="help">
       <span><kbd>WASD</kbd>/<kbd>↑↓←→</kbd> move</span>
-      <span><kbd>Space</kbd> rotate the mirror you face</span>
+      <span><kbd>Space</kbd> rotate faced mirror</span>
+      <span><kbd>Click/Tap</kbd> adjacent mirror to rotate</span>
       <span><kbd>R</kbd> restart</span>
       <span><kbd>N</kbd> next room</span>
       <span class="hint">Walking is free — only mirror rotations cost moves.</span>
     </footer>
   </main>
 
-  <!-- modular load order: pure engine, then data, then the browser glue -->
   <script src="engine.js"></script>
   <script src="levels.js"></script>
   <script src="main.js"></script>
