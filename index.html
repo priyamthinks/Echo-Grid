@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Echo Grid</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="app">
+    <header class="topbar">
+      <div class="brand">
+        <h1>ECHO&nbsp;GRID</h1>
+        <p class="tagline">redirect the sound · power the crystals · open the gate</p>
+      </div>
+      <div class="hud">
+        <div class="stat">
+          <span class="stat-label">Room</span>
+          <span class="stat-value"><span id="levelNum">1</span> · <span id="levelName">—</span></span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Moves</span>
+          <span class="stat-value"><span id="moveCount">0</span> / <span id="moveLimit">0</span></span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Crystals</span>
+          <span class="stat-value"><span id="crystalCount">0/0</span></span>
+          <span class="dots" id="crystalDots"></span>
+        </div>
+      </div>
+    </header>
+
+    <section class="stage">
+      <canvas id="game" width="480" height="480"></canvas>
+      <div id="overlay" class="overlay hidden">
+        <div class="overlay-card">
+          <h2 id="overlayTitle">Level Complete</h2>
+          <p id="overlayBody"></p>
+          <div class="overlay-actions">
+            <button id="overlayNext" class="btn primary">Next Level (N)</button>
+            <button id="overlayRestart" class="btn">Replay (R)</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="controls">
+      <div class="buttons">
+        <button id="restartBtn" class="btn">↺ Restart (R)</button>
+        <button id="nextBtn" class="btn primary" disabled>Next ▸ (N)</button>
+      </div>
+      <div class="levelselect">
+        <span class="stat-label">Rooms</span>
+        <div id="levelSelect" class="level-list"></div>
+      </div>
+    </section>
+
+    <footer class="help">
+      <span><kbd>WASD</kbd>/<kbd>↑↓←→</kbd> move</span>
+      <span><kbd>Space</kbd> rotate the mirror you face</span>
+      <span><kbd>R</kbd> restart</span>
+      <span><kbd>N</kbd> next room</span>
+      <span class="hint">Walking is free — only mirror rotations cost moves.</span>
+    </footer>
+  </main>
+
+  <!-- modular load order: pure engine, then data, then the browser glue -->
+  <script src="engine.js"></script>
+  <script src="levels.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
