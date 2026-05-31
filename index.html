@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#05060a" />
   <title>Echo Grid</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -53,6 +54,18 @@
         <span class="stat-label">Rooms</span>
         <div id="levelSelect" class="level-list"></div>
       </div>
+    </section>
+
+    <!-- On-screen controls — shown on touch devices / narrow screens -->
+    <section class="touchpad" aria-label="Touch controls">
+      <div class="dpad">
+        <button class="tbtn up" id="touchUp" aria-label="Move up">▲</button>
+        <button class="tbtn left" id="touchLeft" aria-label="Move left">◀</button>
+        <button class="tbtn rotate" id="touchRotate" aria-label="Rotate mirror">⟳</button>
+        <button class="tbtn right" id="touchRight" aria-label="Move right">▶</button>
+        <button class="tbtn down" id="touchDown" aria-label="Move down">▼</button>
+      </div>
+      <p class="touch-hint">D-pad to move · ⟳ rotates the mirror you face</p>
     </section>
 
     <footer class="help">

@@ -548,6 +548,18 @@
     else loadLevel(G.index);
   });
 
+  // On-screen touch controls (mobile). pointerdown covers touch + mouse and
+  // fires once per press; preventDefault stops scroll / double-tap zoom.
+  function bindHold(id, fn) {
+    const b = document.getElementById(id);
+    if (b) b.addEventListener('pointerdown', (e) => { e.preventDefault(); fn(); });
+  }
+  bindHold('touchUp', () => move('up'));
+  bindHold('touchDown', () => move('down'));
+  bindHold('touchLeft', () => move('left'));
+  bindHold('touchRight', () => move('right'));
+  bindHold('touchRotate', () => rotate());
+
   // ---- boot --------------------------------------------------------------
   loadLevel(unlocked);             // resume at the player's frontier room
   requestAnimationFrame(frame);

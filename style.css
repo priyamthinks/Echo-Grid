@@ -24,7 +24,9 @@ html, body {
   color: var(--ink);
   font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;          /* no pull-to-refresh while playing */
 }
+button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; }
 
 #app {
   max-width: 760px;
@@ -184,6 +186,52 @@ canvas {
 .level-list button:hover:not(:disabled) { border-color: var(--cyan); color: #fff; }
 .level-list button.current { border-color: var(--mint); color: #fff; box-shadow: 0 0 10px rgba(94, 255, 200, 0.35); }
 .level-list button.locked { opacity: 0.3; cursor: not-allowed; }
+
+/* ---- touch controls (mobile) ---- */
+.touchpad { display: none; flex-direction: column; align-items: center; gap: 8px; }
+.dpad {
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  grid-template-rows: repeat(3, 64px);
+  gap: 8px;
+}
+.tbtn {
+  font: inherit;
+  font-size: 22px;
+  color: var(--ink);
+  background: linear-gradient(180deg, #16213a, #0c1320);
+  border: 1px solid #2a3c5e;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: transform .06s, border-color .15s, box-shadow .15s;
+}
+.tbtn:active { transform: scale(0.94); border-color: var(--cyan); box-shadow: 0 0 16px rgba(125, 249, 255, 0.3); }
+.tbtn.up    { grid-column: 2; grid-row: 1; }
+.tbtn.left  { grid-column: 1; grid-row: 2; }
+.tbtn.rotate{ grid-column: 2; grid-row: 2; font-size: 26px; color: var(--mint);
+              border-color: #2e6f63; background: linear-gradient(180deg, #123026, #0a1a14); }
+.tbtn.rotate:active { border-color: var(--mint); box-shadow: 0 0 18px rgba(94, 255, 200, 0.35); }
+.tbtn.right { grid-column: 3; grid-row: 2; }
+.tbtn.down  { grid-column: 2; grid-row: 3; }
+.touch-hint { margin: 0; font-size: 11px; color: var(--ink-dim); letter-spacing: 1px; }
+
+/* show the pad on touch devices or narrow screens */
+@media (pointer: coarse), (max-width: 760px) {
+  .touchpad { display: flex; }
+}
+
+/* ---- responsive layout ---- */
+@media (max-width: 760px) {
+  #app { padding: 14px 12px 28px; gap: 14px; }
+  .topbar { flex-direction: column; align-items: stretch; gap: 12px; }
+  .brand h1 { font-size: 24px; letter-spacing: 5px; }
+  .hud { justify-content: space-between; }
+  .stat { flex: 1 1 auto; min-width: 0; }
+  .stage { padding: 8px; width: 100%; }
+  .controls { justify-content: center; }
+  .help { justify-content: center; text-align: center; }
+}
 
 /* ---- help footer ---- */
 .help {

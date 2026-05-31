@@ -7,11 +7,15 @@ opens, and you walk free.
 
 Built with plain **HTML + CSS + Canvas + JavaScript**. No libraries, no build step.
 
-```
-open index.html in any modern browser
-```
+**▶ Play online:** https://priyamthinks.github.io/Echo-Grid/
+(or just open `index.html` in any modern browser)
+
+Works on **desktop and mobile** — keyboard on desktop, an on-screen D-pad +
+rotate button on touch screens.
 
 ## How to play
+
+**Desktop**
 
 | Key | Action |
 | --- | --- |
@@ -19,6 +23,9 @@ open index.html in any modern browser
 | `Space` | Rotate the mirror you are facing |
 | `R` | Restart the room |
 | `N` | Next room (after clearing the current one) |
+
+**Mobile** — use the on-screen D-pad to move and the **⟳** button to rotate the
+mirror you are facing. Restart / Next buttons are below the board.
 
 - The **emitter** fires a glowing beam in a fixed direction.
 - Walk next to a **mirror**, face it, and press `Space` to flip it between `/` and `\`.
@@ -56,6 +63,7 @@ verify.js     node: validates every level is solvable & reachable
 test-game.js  node: integration tests for the core rules
 smoke.js      node: runs main.js under a stubbed DOM (end-to-end check)
 README.md     this file
+.github/workflows/pages.yml   deploys the site to GitHub Pages
 ```
 
 ## Editing / adding levels
